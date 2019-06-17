@@ -3,28 +3,29 @@
 import React from 'react';
 import Data from './Data/Data';
 import Users from './Users/Users';
+import { validateEmail } from '../libs/Helpers';
 
 class Main extends React.Component {
   state = {};
 
   validateForm = () => {
-    let { nickNameError, emailError, ipError } = '';
+    let { nickNameError, emailError, ipAdressError } = '';
     const { nickname, email, ipadress } = this.state;
 
     if (!nickname) {
-      nickNameError = 'please provide Nickname';
-    }
-
-    if (!email) {
-      emailError = 'please provideEmail';
+      nickNameError = 'Please, provide nickname';
     }
 
     if (!ipadress) {
-      ipError = 'please provide Ip';
+      ipAdressError = 'Please, provide Ip';
     }
 
-    if (nickNameError || emailError || ipError) {
-      this.setState({ nickNameError, emailError, ipError });
+    if (!validateEmail(email)) {
+      emailError = 'Please, provide valid Email';
+    }
+
+    if (nickNameError || emailError || ipAdressError) {
+      this.setState({ nickNameError, emailError, ipAdressError });
       return false;
     }
 
@@ -48,9 +49,17 @@ class Main extends React.Component {
   };
 
   render() {
+    const { nickNameError, emailError, ipAdressError } = this.state;
+
     return (
       <>
-        <Data onChange={this.onChange} onSubmit={this.onSubmit} />
+        <Data
+          onChange={this.onChange}
+          onSubmit={this.onSubmit}
+          nickNameError={nickNameError}
+          emailError={emailError}
+          ipAdressError={ipAdressError}
+        />
         <Users />
       </>
     );
