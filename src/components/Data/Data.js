@@ -8,7 +8,7 @@ const Data = ({
   emailError,
   ipAdressError,
 }) => (
-  <form action="" onSubmit={onSubmit}>
+  <form onSubmit={onSubmit} noValidate>
     <label htmlFor="nickname">Nickname</label>
     <input type="text" id="nickname" name="nickname" onChange={onChange} />
     {nickNameError}

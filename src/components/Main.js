@@ -3,7 +3,7 @@
 import React from 'react';
 import Data from './Data/Data';
 import Users from './Users/Users';
-import { validateEmail } from '../libs/Helpers';
+import { validateEmail, validateIPaddress } from '../libs/Helpers';
 
 class Main extends React.Component {
   state = {};
@@ -22,6 +22,10 @@ class Main extends React.Component {
 
     if (!validateEmail(email)) {
       emailError = 'Please, provide valid Email';
+    }
+
+    if (!validateIPaddress(ipadress)) {
+      ipAdressError = 'Please, provide valid IpAdress';
     }
 
     if (nickNameError || emailError || ipAdressError) {
