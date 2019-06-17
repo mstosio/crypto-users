@@ -6,7 +6,10 @@ import Users from './Users/Users';
 import { validateEmail, validateIPaddress } from '../libs/Helpers';
 
 class Main extends React.Component {
-  state = {};
+  state = {
+    isEnabled: false,
+    users: {},
+  };
 
   validateForm = () => {
     let { nickNameError, emailError, ipAdressError } = '';
@@ -41,19 +44,39 @@ class Main extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+
+    const validation = this.canBeSubmitted();
+
+    if (validation) {
+      this.setState({
+        isEnabled: true,
+      });
+    }
   };
 
   onSubmit = event => {
     event.preventDefault();
+    const { nickname, email, ipadress } = this.state;
     const validation = this.validateForm();
 
     if (validation) {
-      alert('huuray');
+      this.setState({
+        users: { nickname, email, ipadress },
+      });
     }
   };
 
+  canBeSubmitted() {
+    const { nickname, email, ipadress } = this.state;
+
+    if (validateEmail(email) && validateIPaddress(ipadress) && nickname) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
-    const { nickNameError, emailError, ipAdressError } = this.state;
+    const { nickNameError, emailError, ipAdressError, isEnabled } = this.state;
 
     return (
       <>
@@ -63,6 +86,7 @@ class Main extends React.Component {
           nickNameError={nickNameError}
           emailError={emailError}
           ipAdressError={ipAdressError}
+          isEnabled={isEnabled}
         />
         <Users />
       </>

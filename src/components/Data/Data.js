@@ -7,6 +7,7 @@ const Data = ({
   nickNameError,
   emailError,
   ipAdressError,
+  isEnabled,
 }) => (
   <form onSubmit={onSubmit} noValidate>
     <label htmlFor="nickname">Nickname</label>
@@ -21,7 +22,9 @@ const Data = ({
     <input type="text" id="ipadress" name="ipadress" onChange={onChange} />
     {ipAdressError}
 
-    <button type="submit">Add User</button>
+    <button type="submit" disabled={!isEnabled}>
+      Add User
+    </button>
   </form>
 );
 
@@ -33,4 +36,5 @@ Data.propTypes = {
   nickNameError: PropTypes.string,
   emailError: PropTypes.string,
   ipAdressError: PropTypes.string,
+  isEnabled: PropTypes.bool,
 };
