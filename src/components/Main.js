@@ -5,10 +5,20 @@ import Users from './Users/Users';
 class Main extends React.Component {
   state = {};
 
+  onChange = event => {
+    event.preventDefault();
+    console.log('hi');
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    console.log('click');
+  };
+
   render() {
     return (
       <>
-        <Data />
+        <Data onChange={this.onChange} />
         <Users />
       </>
     );
