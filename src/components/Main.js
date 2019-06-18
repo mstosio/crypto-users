@@ -8,7 +8,7 @@ import { validateEmail, validateIPaddress } from '../libs/Helpers';
 class Main extends React.Component {
   state = {
     isEnabled: false,
-    users: {},
+    users: [],
   };
 
   validateForm = () => {
@@ -54,21 +54,32 @@ class Main extends React.Component {
     }
   };
 
+  addUser = user => {
+    const { users } = this.state;
+    const usersList = [...users];
+    usersList.push(user);
+
+    this.setState({
+      users: usersList,
+      nickname: '',
+      email: '',
+      ipadress: '',
+    });
+  };
+
   onSubmit = event => {
     event.preventDefault();
-    const { nickname, email, ipadress } = this.state;
+    const { nickname, email, ipadress, users } = this.state;
     const validation = this.validateForm();
 
     if (validation) {
-      this.setState({
-        users: { nickname, email, ipadress },
-      });
+      this.addUser({ nickname, email, ipadress });
+      event.target.reset();
     }
   };
 
   canBeSubmitted() {
     const { nickname, email, ipadress } = this.state;
-
     if (validateEmail(email) && validateIPaddress(ipadress) && nickname) {
       return true;
     }
@@ -76,7 +87,13 @@ class Main extends React.Component {
   }
 
   render() {
-    const { nickNameError, emailError, ipAdressError, isEnabled } = this.state;
+    const {
+      nickNameError,
+      emailError,
+      ipAdressError,
+      isEnabled,
+      users,
+    } = this.state;
 
     return (
       <>
@@ -88,7 +105,7 @@ class Main extends React.Component {
           ipAdressError={ipAdressError}
           isEnabled={isEnabled}
         />
-        <Users />
+        <Users users={users} />
       </>
     );
   }
