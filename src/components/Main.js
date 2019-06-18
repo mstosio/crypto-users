@@ -15,11 +15,11 @@ class Main extends React.Component {
     let { nickNameError, emailError, ipAdressError } = '';
     const { nickname, email, ipadress } = this.state;
 
-    if (!nickname) {
+    if (nickname === '') {
       nickNameError = 'Please, provide nickname';
     }
 
-    if (!ipadress) {
+    if (ipadress === '') {
       ipAdressError = 'Please, provide Ip';
     }
 
@@ -54,16 +54,38 @@ class Main extends React.Component {
     }
   };
 
+  checkIfExsists = users => {
+    const { nickname, email } = this.state;
+    let bool = true;
+    // eslint-disable-next-line array-callback-return
+    users.map(user => {
+      if (nickname === user.nickname) {
+        bool = false;
+        alert('DUDE, USER WITH THIS NICKNAME EXSISTS');
+      }
+      if (email === user.email) {
+        bool = false;
+        alert('DUDE, EMAIL IS ALREADY TAKEN');
+      }
+    });
+
+    return bool;
+  };
+
   addUser = user => {
     const { users } = this.state;
     const usersList = [...users];
     usersList.push(user);
 
+    // change to Initial State?
     this.setState({
       users: usersList,
       nickname: '',
       email: '',
       ipadress: '',
+      nickNameError: '',
+      emailError: '',
+      ipAdressError: '',
     });
   };
 
@@ -71,8 +93,9 @@ class Main extends React.Component {
     event.preventDefault();
     const { nickname, email, ipadress, users } = this.state;
     const validation = this.validateForm();
+    const checkIfExsists = this.checkIfExsists(users);
 
-    if (validation) {
+    if (checkIfExsists && validation) {
       this.addUser({ nickname, email, ipadress });
       event.target.reset();
     }
