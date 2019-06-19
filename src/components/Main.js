@@ -72,6 +72,14 @@ class Main extends React.Component {
     return bool;
   };
 
+  removeItem = nickname => {
+    const { users } = this.state;
+    const userList = [...users];
+    this.setState({
+      users: userList.filter(user => user.nickname !== nickname),
+    });
+  };
+
   addUser = user => {
     const { users } = this.state;
     const usersList = [...users];
@@ -86,7 +94,12 @@ class Main extends React.Component {
       nickNameError: '',
       emailError: '',
       ipAdressError: '',
+      isEnabled: false,
     });
+  };
+
+  deleteUsers = () => {
+    console.log('crap');
   };
 
   onSubmit = event => {
@@ -128,7 +141,11 @@ class Main extends React.Component {
           ipAdressError={ipAdressError}
           isEnabled={isEnabled}
         />
-        <Users users={users} />
+        <Users
+          users={users}
+          removeItem={this.removeItem}
+          deleteUsers={this.deleteUsers}
+        />
       </>
     );
   }
