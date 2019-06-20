@@ -12,7 +12,7 @@ import {
   Button,
 } from '../../layout/index';
 
-const Users = ({ users, removeItem, deleteUsers }) => {
+const Users = ({ users, removeItem, deleteUsers, sortList }) => {
   let button;
 
   if (users.length !== 0) {
@@ -30,6 +30,7 @@ const Users = ({ users, removeItem, deleteUsers }) => {
 
   return (
     <>
+      <Button onClick={sortList}>Sort</Button>
       <UsersWrapper>
         <Table>
           <TableThead>
@@ -62,4 +63,5 @@ Users.propTypes = {
   users: PropTypes.array,
   removeItem: PropTypes.func,
   deleteUsers: PropTypes.func,
+  sortList: PropTypes.func,
 };

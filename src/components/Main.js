@@ -1,7 +1,5 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable no-cond-assign */
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { theme } from '../layout/utils/theme';
 import Data from './Data/Data';
 import Users from './Users/Users';
@@ -11,7 +9,18 @@ import { CryptoApp, H1 } from '../layout/index';
 class Main extends React.Component {
   state = {
     isEnabled: false,
-    users: [{ nickname: 'dog', email: 'lol@wp.pl', ipadress: '212.222.22.22' }],
+    nickname: '',
+    email: '',
+    ipadress: '',
+    nickNameError: '',
+    emailError: '',
+    ipAdressError: '',
+    users: [
+      { nickname: 'zog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
+      { nickname: 'aog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
+      { nickname: 'bog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
+      { nickname: 'pog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
+    ],
   };
 
   validateForm = () => {
@@ -42,20 +51,11 @@ class Main extends React.Component {
     return true;
   };
 
-  // clean up
-  onChange = event => {
-    event.preventDefault();
-    this.setState({
+  onChange = async event => {
+    await this.setState({
       [event.target.name]: event.target.value,
     });
-
-    const validation = this.canBeSubmitted();
-
-    if (validation) {
-      this.setState({
-        isEnabled: true,
-      });
-    }
+    this.canBeSubmitted();
   };
 
   checkIfExsists = users => {
@@ -120,17 +120,41 @@ class Main extends React.Component {
     }
   };
 
-  // shorten
+  sortList = () => {
+    const { users, nickAsc } = this.state;
+    const newList = [...users];
+
+    const newlist2 = newList.sort((a, b) =>
+      // eslint-disable-next-line no-nested-ternary
+      a.nickname > b.nickname ? 1 : b.nickname > a.nickname ? -1 : 0
+    );
+
+    this.setState({
+      users: newList,
+    });
+  };
+
   canBeSubmitted() {
     const { nickname, email, ipadress } = this.state;
+
     if (validateEmail(email) && validateIPaddress(ipadress) && nickname) {
-      return true;
+      this.setState({
+        isEnabled: true,
+        ipAdressError: '',
+      });
+    } else {
+      this.validateForm();
+      this.setState({
+        isEnabled: false,
+      });
     }
-    return false;
   }
 
   render() {
     const {
+      nickname,
+      email,
+      ipadress,
       nickNameError,
       emailError,
       ipAdressError,
@@ -143,8 +167,12 @@ class Main extends React.Component {
         <CryptoApp>
           <H1>Crypto users</H1>
           <Data
+            nickname={nickname}
+            email={email}
+            ipadress={ipadress}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
+            nickanme
             nickNameError={nickNameError}
             emailError={emailError}
             ipAdressError={ipAdressError}
@@ -155,6 +183,7 @@ class Main extends React.Component {
             users={users}
             removeItem={this.removeItem}
             deleteUsers={this.deleteUsers}
+            sortList={this.sortList}
           />
         </CryptoApp>
       </ThemeProvider>

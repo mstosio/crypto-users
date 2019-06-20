@@ -10,6 +10,9 @@ import {
 } from '../../layout/index';
 
 const Data = ({
+  nickname,
+  email,
+  ipadress,
   onSubmit,
   onChange,
   nickNameError,
@@ -37,17 +40,35 @@ const Data = ({
     <Form onSubmit={onSubmit} autoComplete="off" noValidate>
       <Label htmlFor="nickname">Nickname</Label>
       <InputBox>
-        <Input type="text" id="nickname" name="nickname" onChange={onChange} />
+        <Input
+          type="text"
+          id="nickname"
+          name="nickname"
+          value={nickname}
+          onChange={onChange}
+        />
         {errorNickname}
       </InputBox>
       <Label htmlFor="email">Email</Label>
       <InputBox>
-        <Input type="email" id="email" name="email" onChange={onChange} />
+        <Input
+          type="email"
+          id="email"
+          name="email"
+          email={email}
+          onChange={onChange}
+        />
         {errorEmail}
       </InputBox>
       <Label htmlFor="ipadress">IP adress</Label>
       <InputBox>
-        <Input type="text" id="ipadress" name="ipadress" onChange={onChange} />
+        <Input
+          type="text"
+          id="ipadress"
+          name="ipadress"
+          ipadress={ipadress}
+          onChange={onChange}
+        />
         {errorIP}
       </InputBox>
       <Button type="submit" disabled={!isEnabled}>
@@ -60,6 +81,9 @@ const Data = ({
 export default Data;
 
 Data.propTypes = {
+  nickname: PropTypes.string,
+  email: PropTypes.string,
+  ipadress: PropTypes.string,
   onSubmit: PropTypes.func,
   onChange: PropTypes.func,
   nickNameError: PropTypes.string,
