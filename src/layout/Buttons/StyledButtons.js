@@ -1,8 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
   margin-top: 35px;
-  background-color: ${({ theme }) => theme.colors.maingreen};
+  ${'' /* background-color: ${({ theme }) => theme.colors.maingreen}; */}
+  ${({ disabled, theme }) =>
+    !disabled &&
+    `
+    background:  ${theme.colors.maingreen};
+  `}
   color: ${({ theme }) => theme.colors.white};
   border: none;
   border-radius: 20px;
