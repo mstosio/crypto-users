@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button } from '../../layout/index';
+import { Form, Button, Input, Label, Error } from '../../layout/index';
 
 const Data = ({
   onSubmit,
@@ -11,17 +11,17 @@ const Data = ({
   isEnabled,
 }) => (
   <Form onSubmit={onSubmit} autoComplete="off" noValidate>
-    <label htmlFor="nickname">Nickname</label>
-    <input type="text" id="nickname" name="nickname" onChange={onChange} />
-    {nickNameError}
+    <Label htmlFor="nickname">Nickname</Label>
+    <Input type="text" id="nickname" name="nickname" onChange={onChange} />
+    <Error>{nickNameError}</Error>
 
-    <label htmlFor="email">Email</label>
-    <input type="email" id="email" name="email" onChange={onChange} />
-    {emailError}
+    <Label htmlFor="email">Email</Label>
+    <Input type="email" id="email" name="email" onChange={onChange} />
+    <Error>{emailError}</Error>
 
-    <label htmlFor="ipadress">IP adress</label>
-    <input type="text" id="ipadress" name="ipadress" onChange={onChange} />
-    {ipAdressError}
+    <Label htmlFor="ipadress">IP adress</Label>
+    <Input type="text" id="ipadress" name="ipadress" onChange={onChange} />
+    <Error>{ipAdressError}</Error>
 
     <Button type="submit" disabled={!isEnabled}>
       Add User

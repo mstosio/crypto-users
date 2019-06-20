@@ -6,6 +6,6 @@ export const CryptoApp = styled.div`
   flex-direction: column;
   padding: 50px;
   background-color: #ffffff;
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: ${({ theme }) => theme.shadows.lightshadow};
   width: 1000px;
 `;

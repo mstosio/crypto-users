@@ -10,3 +10,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: flex-start;
 `;
+
+export const Error = styled.div`
+  color: red;
+`;

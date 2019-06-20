@@ -1,6 +1,8 @@
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-cond-assign */
 import React from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { theme } from '../layout/utils/theme';
 import Data from './Data/Data';
 import Users from './Users/Users';
 import { validateEmail, validateIPaddress } from '../libs/Helpers';
@@ -137,7 +139,7 @@ class Main extends React.Component {
     } = this.state;
 
     return (
-      <>
+      <ThemeProvider theme={theme}>
         <CryptoApp>
           <H1>Crypto users</H1>
           <Data
@@ -155,7 +157,7 @@ class Main extends React.Component {
             deleteUsers={this.deleteUsers}
           />
         </CryptoApp>
-      </>
+      </ThemeProvider>
     );
   }
 }
