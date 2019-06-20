@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import User from './User/User';
+import UserSort from './UserSort';
 import {
   UsersWrapper,
   Table,
@@ -12,7 +13,14 @@ import {
   Button,
 } from '../../layout/index';
 
-const Users = ({ users, removeItem, deleteUsers, sortList }) => {
+const Users = ({
+  users,
+  removeItem,
+  deleteUsers,
+  sortList,
+  sortBy,
+  changeSort,
+}) => {
   let button;
 
   if (users.length !== 0) {
@@ -30,7 +38,7 @@ const Users = ({ users, removeItem, deleteUsers, sortList }) => {
 
   return (
     <>
-      <Button onClick={sortList}>Sort</Button>
+      <UserSort changeSort={changeSort} sortBy={sortBy} sortList={sortList} />
       <UsersWrapper>
         <Table>
           <TableThead>
@@ -62,6 +70,8 @@ export default Users;
 Users.propTypes = {
   users: PropTypes.array,
   removeItem: PropTypes.func,
+  changeSort: PropTypes.func,
   deleteUsers: PropTypes.func,
   sortList: PropTypes.func,
+  sortBy: PropTypes.string,
 };

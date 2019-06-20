@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable no-cond-assign */
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../layout/utils/theme';
@@ -16,11 +18,13 @@ class Main extends React.Component {
     emailError: '',
     ipAdressError: '',
     users: [
-      { nickname: 'zog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
-      { nickname: 'aog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
-      { nickname: 'bog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
-      { nickname: 'pog', email: 'lol@wp.pl', ipadress: '212.222.22.22' },
+      { nickname: 'zog', email: 'col@wp.pl', ipadress: '212.222.22.22' },
+      { nickname: 'aog', email: 'aol@wp.pl', ipadress: '212.222.22.22' },
+      { nickname: 'bog', email: 'bol@wp.pl', ipadress: '212.222.22.22' },
+      { nickname: 'cog', email: 'zol@wp.pl', ipadress: '212.222.22.22' },
     ],
+    sortBy: 'nickname',
+    sortType: 'asc',
   };
 
   validateForm = () => {
@@ -98,6 +102,8 @@ class Main extends React.Component {
       nickNameError: '',
       emailError: '',
       ipAdressError: '',
+      sortBy: '',
+      sortType: '',
       isEnabled: false,
     });
   };
@@ -120,14 +126,32 @@ class Main extends React.Component {
     }
   };
 
-  sortList = () => {
-    const { users, nickAsc } = this.state;
+  changeSort = event => {
+    const sortInfo = event.target.value.split('-');
+
+    this.setState({
+      sortBy: sortInfo[0],
+      sortType: sortInfo[1],
+    });
+  };
+
+  sortList = value => {
+    const { users, sortType } = this.state;
     const newList = [...users];
 
-    const newlist2 = newList.sort((a, b) =>
+    const sortSelectedAsc = propName => (a, b) =>
       // eslint-disable-next-line no-nested-ternary
-      a.nickname > b.nickname ? 1 : b.nickname > a.nickname ? -1 : 0
-    );
+      a[propName] === b[propName] ? 0 : a[propName] < b[propName] ? -1 : 1;
+
+    const sortSelectedDsc = propName => (a, b) =>
+      // eslint-disable-next-line no-nested-ternary
+      a[propName] === b[propName] ? 0 : a[propName] > b[propName] ? -1 : 1;
+
+    if (sortType === 'asc') {
+      newList.sort(sortSelectedAsc(value));
+    } else {
+      newList.sort(sortSelectedDsc(value));
+    }
 
     this.setState({
       users: newList,
@@ -160,6 +184,7 @@ class Main extends React.Component {
       ipAdressError,
       isEnabled,
       users,
+      sortBy,
     } = this.state;
 
     return (
@@ -172,7 +197,6 @@ class Main extends React.Component {
             ipadress={ipadress}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
-            nickanme
             nickNameError={nickNameError}
             emailError={emailError}
             ipAdressError={ipAdressError}
@@ -184,6 +208,8 @@ class Main extends React.Component {
             removeItem={this.removeItem}
             deleteUsers={this.deleteUsers}
             sortList={this.sortList}
+            sortBy={sortBy}
+            changeSort={this.changeSort}
           />
         </CryptoApp>
       </ThemeProvider>

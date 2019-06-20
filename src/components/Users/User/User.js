@@ -8,7 +8,7 @@ const User = ({ nickname, email, ipadress, removeItem }) => (
     <TD>{email}</TD>
     <TD>
       {ipadress}
-      <DeleteButton onClick={() => removeItem(nickname)} type="button" />
+      <DeleteButton onClick={() => removeItem(email)} type="button" />
     </TD>
   </TableRow>
 );
