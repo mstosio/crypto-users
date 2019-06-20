@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/task/static/js/main.96bec9d3.chunk.js",
-    "main.js.map": "/task/static/js/main.96bec9d3.chunk.js.map",
-    "runtime~main.js": "/task/static/js/runtime~main.f79bd0da.js",
-    "runtime~main.js.map": "/task/static/js/runtime~main.f79bd0da.js.map",
-    "static/js/2.b3680f0f.chunk.js": "/task/static/js/2.b3680f0f.chunk.js",
-    "static/js/2.b3680f0f.chunk.js.map": "/task/static/js/2.b3680f0f.chunk.js.map",
-    "index.html": "/task/index.html",
-    "precache-manifest.6378657f63d56158aed98cea94fa7296.js": "/task/precache-manifest.6378657f63d56158aed98cea94fa7296.js",
-    "service-worker.js": "/task/service-worker.js"
+    "main.js": "/Recruitment-Task/static/js/main.96bec9d3.chunk.js",
+    "main.js.map": "/Recruitment-Task/static/js/main.96bec9d3.chunk.js.map",
+    "runtime~main.js": "/Recruitment-Task/static/js/runtime~main.e6cac868.js",
+    "runtime~main.js.map": "/Recruitment-Task/static/js/runtime~main.e6cac868.js.map",
+    "static/js/2.bb076ba3.chunk.js": "/Recruitment-Task/static/js/2.bb076ba3.chunk.js",
+    "static/js/2.bb076ba3.chunk.js.map": "/Recruitment-Task/static/js/2.bb076ba3.chunk.js.map",
+    "index.html": "/Recruitment-Task/index.html",
+    "precache-manifest.4f15ea4e14156a6fc8c440f004384279.js": "/Recruitment-Task/precache-manifest.4f15ea4e14156a6fc8c440f004384279.js",
+    "service-worker.js": "/Recruitment-Task/service-worker.js"
   }
 }
