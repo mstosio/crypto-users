@@ -5,7 +5,7 @@ export const Input = styled.input`
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.verylightgray};
 `;
 
 export const Label = styled.label`

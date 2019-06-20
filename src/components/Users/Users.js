@@ -1,7 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import User from './User/User';
+import {
+  UsersWrapper,
+  Table,
+  TableThead,
+  TableTbody,
+  TableRow,
+  TH,
+} from '../../layout/index';
 
 const Users = ({ users, removeItem, deleteUsers }) => {
   let button;
@@ -22,15 +30,28 @@ const Users = ({ users, removeItem, deleteUsers }) => {
   return (
     <>
       {button}
-      {users.map(user => (
-        <User
-          key={shortid.generate()}
-          nickname={user.nickname}
-          email={user.email}
-          ipadress={user.ipadress}
-          removeItem={removeItem}
-        />
-      ))}
+      <UsersWrapper>
+        <Table>
+          <TableThead>
+            <TableRow>
+              <TH>Nickname</TH>
+              <TH>E-mail</TH>
+              <TH>Ip Adress</TH>
+            </TableRow>
+          </TableThead>
+          <TableTbody>
+            {users.map(user => (
+              <User
+                key={shortid.generate()}
+                nickname={user.nickname}
+                email={user.email}
+                ipadress={user.ipadress}
+                removeItem={removeItem}
+              />
+            ))}
+          </TableTbody>
+        </Table>
+      </UsersWrapper>
     </>
   );
 };

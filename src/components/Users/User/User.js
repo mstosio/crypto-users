@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from '../../../layout/index';
+import { TableRow, TD } from '../../../layout/index';
 
 const User = ({ nickname, email, ipadress, removeItem }) => (
-  <div>
-    <div>{nickname}</div>
-    <div>{email}</div>
-    <div>{ipadress}</div>
-    <button onClick={() => removeItem(nickname)} type="submit">
-      Delete
-    </button>
-  </div>
+  <TableRow>
+    <TD>{nickname}</TD>
+    <TD>{email}</TD>
+    <TD>
+      {ipadress}
+      <button onClick={() => removeItem(nickname)} type="submit">
+        Delete
+      </button>
+    </TD>
+  </TableRow>
 );
 
 export default User;

@@ -11,7 +11,7 @@ import { CryptoApp, H1 } from '../layout/index';
 class Main extends React.Component {
   state = {
     isEnabled: false,
-    users: [],
+    users: [{ nickname: 'dog', email: 'lol@wp.pl', ipadress: '212.222.22.22' }],
   };
 
   validateForm = () => {
