@@ -14,3 +14,19 @@ export const Button = styled.button`
   padding: 10px 15px;
   cursor: pointer;
 `;
+
+export const DeleteButton = styled.button`
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: ${({ theme }) => theme.colors.lightnavy};
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+
+  &:after {
+    content: 'x';
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.colors.deepnavy};
+  }
+`;

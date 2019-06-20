@@ -9,6 +9,7 @@ import {
   TableTbody,
   TableRow,
   TH,
+  Button,
 } from '../../layout/index';
 
 const Users = ({ users, removeItem, deleteUsers }) => {
@@ -16,24 +17,23 @@ const Users = ({ users, removeItem, deleteUsers }) => {
 
   if (users.length !== 0) {
     button = (
-      <button
+      <Button
         type="button"
         onClick={() =>
           window.confirm('Are you sure u want to delete?') && deleteUsers()
         }
       >
         Delete Users
-      </button>
+      </Button>
     );
   }
 
   return (
     <>
-      {button}
       <UsersWrapper>
         <Table>
           <TableThead>
-            <TableRow>
+            <TableRow heading>
               <TH>Nickname</TH>
               <TH>E-mail</TH>
               <TH>Ip Adress</TH>
@@ -51,6 +51,7 @@ const Users = ({ users, removeItem, deleteUsers }) => {
             ))}
           </TableTbody>
         </Table>
+        {button}
       </UsersWrapper>
     </>
   );

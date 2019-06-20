@@ -8,6 +8,10 @@ export const Input = styled.input`
   border-bottom: 1px solid ${({ theme }) => theme.colors.verylightgray};
 `;
 
+export const InputBox = styled.div`
+  display: flex;
+`;
+
 export const Label = styled.label`
   margin-top: 25px;
   color: ${({ theme }) => theme.colors.lightgray};

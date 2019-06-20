@@ -8,6 +8,10 @@ export const theme = {
     lightborder: '#edf5ff',
     lightnavy: '#f6faff',
     deepnavy: '#8fa1c6',
+    light: '#edf5ff',
+    darknavy: '#354b77',
+    lightpink: '#fcebf1',
+    intensivepink: '#e34079',
   },
   shadows: {
     lightshadow: '0 0 5px 2px rgba(0, 0, 0, 0.05)',

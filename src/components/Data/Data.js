@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, Input, Label, Error } from '../../layout/index';
+import {
+  Form,
+  Button,
+  Input,
+  Label,
+  Error,
+  InputBox,
+} from '../../layout/index';
 
 const Data = ({
   onSubmit,
@@ -9,25 +16,46 @@ const Data = ({
   emailError,
   ipAdressError,
   isEnabled,
-}) => (
-  <Form onSubmit={onSubmit} autoComplete="off" noValidate>
-    <Label htmlFor="nickname">Nickname</Label>
-    <Input type="text" id="nickname" name="nickname" onChange={onChange} />
-    <Error>{nickNameError}</Error>
+}) => {
+  let errorIP;
+  let errorEmail;
+  let errorNickname;
 
-    <Label htmlFor="email">Email</Label>
-    <Input type="email" id="email" name="email" onChange={onChange} />
-    <Error>{emailError}</Error>
+  if (nickNameError) {
+    errorNickname = <Error>{nickNameError}</Error>;
+  }
 
-    <Label htmlFor="ipadress">IP adress</Label>
-    <Input type="text" id="ipadress" name="ipadress" onChange={onChange} />
-    <Error>{ipAdressError}</Error>
+  if (ipAdressError) {
+    errorIP = <Error>{ipAdressError}</Error>;
+  }
 
-    <Button type="submit" disabled={!isEnabled}>
-      Add User
-    </Button>
-  </Form>
-);
+  if (emailError) {
+    errorEmail = <Error>{emailError}</Error>;
+  }
+
+  return (
+    <Form onSubmit={onSubmit} autoComplete="off" noValidate>
+      <Label htmlFor="nickname">Nickname</Label>
+      <InputBox>
+        <Input type="text" id="nickname" name="nickname" onChange={onChange} />
+        {errorNickname}
+      </InputBox>
+      <Label htmlFor="email">Email</Label>
+      <InputBox>
+        <Input type="email" id="email" name="email" onChange={onChange} />
+        {errorEmail}
+      </InputBox>
+      <Label htmlFor="ipadress">IP adress</Label>
+      <InputBox>
+        <Input type="text" id="ipadress" name="ipadress" onChange={onChange} />
+        {errorIP}
+      </InputBox>
+      <Button type="submit" disabled={!isEnabled}>
+        Add User
+      </Button>
+    </Form>
+  );
+};
 
 export default Data;
 

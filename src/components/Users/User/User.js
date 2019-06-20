@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TableRow, TD } from '../../../layout/index';
+import { TableRow, TD, DeleteButton } from '../../../layout/index';
 
 const User = ({ nickname, email, ipadress, removeItem }) => (
   <TableRow>
@@ -8,9 +8,7 @@ const User = ({ nickname, email, ipadress, removeItem }) => (
     <TD>{email}</TD>
     <TD>
       {ipadress}
-      <button onClick={() => removeItem(nickname)} type="submit">
-        Delete
-      </button>
+      <DeleteButton onClick={() => removeItem(nickname)} type="button" />
     </TD>
   </TableRow>
 );

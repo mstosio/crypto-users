@@ -12,6 +12,8 @@ class Main extends React.Component {
   state = {
     isEnabled: false,
     users: [{ nickname: 'dog', email: 'lol@wp.pl', ipadress: '212.222.22.22' }],
+    nickNameError: 'dsadsadsa',
+    emailError: 'sadsadsadsad',
   };
 
   validateForm = () => {
