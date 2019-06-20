@@ -4,6 +4,7 @@ import React from 'react';
 import Data from './Data/Data';
 import Users from './Users/Users';
 import { validateEmail, validateIPaddress } from '../libs/Helpers';
+import { CryptoApp, H1 } from '../layout/index';
 
 class Main extends React.Component {
   state = {
@@ -39,6 +40,7 @@ class Main extends React.Component {
     return true;
   };
 
+  // clean up
   onChange = event => {
     event.preventDefault();
     this.setState({
@@ -99,7 +101,9 @@ class Main extends React.Component {
   };
 
   deleteUsers = () => {
-    console.log('crap');
+    this.setState({
+      users: [],
+    });
   };
 
   onSubmit = event => {
@@ -114,6 +118,7 @@ class Main extends React.Component {
     }
   };
 
+  // shorten
   canBeSubmitted() {
     const { nickname, email, ipadress } = this.state;
     if (validateEmail(email) && validateIPaddress(ipadress) && nickname) {
@@ -133,19 +138,23 @@ class Main extends React.Component {
 
     return (
       <>
-        <Data
-          onChange={this.onChange}
-          onSubmit={this.onSubmit}
-          nickNameError={nickNameError}
-          emailError={emailError}
-          ipAdressError={ipAdressError}
-          isEnabled={isEnabled}
-        />
-        <Users
-          users={users}
-          removeItem={this.removeItem}
-          deleteUsers={this.deleteUsers}
-        />
+        <CryptoApp>
+          <H1>Crypto users</H1>
+          <Data
+            onChange={this.onChange}
+            onSubmit={this.onSubmit}
+            nickNameError={nickNameError}
+            emailError={emailError}
+            ipAdressError={ipAdressError}
+            isEnabled={isEnabled}
+          />
+
+          <Users
+            users={users}
+            removeItem={this.removeItem}
+            deleteUsers={this.deleteUsers}
+          />
+        </CryptoApp>
       </>
     );
   }
