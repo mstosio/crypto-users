@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../../layout/index';
+import { Button, UserSortWrapper, Select, P } from '../../layout/index';
 
 const UserSort = ({ changeSort, sortBy, sortList }) => (
-  <div>
-    <Button onClick={() => sortList(sortBy)}>Sort</Button>
-    <select onChange={changeSort}>
+  <UserSortWrapper>
+    <P>Sort by:</P>
+    <Select onChange={changeSort}>
       <option value="nickname-asc" data-sorttype="asc">
         Nickname - A-Z
       </option>
@@ -18,8 +18,11 @@ const UserSort = ({ changeSort, sortBy, sortList }) => (
       <option value="email-dsc" data-sorttype="dsc">
         Email - Z-A
       </option>
-    </select>
-  </div>
+    </Select>
+    <Button onClick={() => sortList(sortBy)} Sort>
+      Sort
+    </Button>
+  </UserSortWrapper>
 );
 
 export default UserSort;

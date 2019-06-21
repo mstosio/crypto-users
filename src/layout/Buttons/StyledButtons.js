@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
-  margin-top: 35px;
+  margin-top: ${props => (props.Sort ? '0' : '35px')};
+  margin-right: ${props => (props.Sort ? '10px' : '0')};
   ${({ disabled, theme }) =>
     !disabled &&
     `
     background:  ${theme.colors.maingreen};
   `}
+  
+
   color: ${({ theme }) => theme.colors.white};
   border: none;
   border-radius: 20px;
@@ -28,5 +31,14 @@ export const DeleteButton = styled.button`
     content: 'x';
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.deepnavy};
+  }
+
+  @media only screen and (max-width: 800px) {
+    height: 35px;
+    width: 35px;
+
+    &:after {
+      font-size: 1rem;
+    }
   }
 `;

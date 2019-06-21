@@ -2,11 +2,15 @@ import styled from 'styled-components';
 
 export const UsersWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.lightborder};
-  padding: 25px;
+  padding: 25px 5px;
   margin-top: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (min-width: 1000px) {
+    padding: 25px;
+  }
 `;
 
 export const Table = styled.table`
@@ -51,4 +55,12 @@ export const TD = styled.td`
   justify-content: space-between;
   align-items: center;
   color: ${({ theme }) => theme.colors.deepnavy};
+
+  @media only screen and (max-width: 900px) {
+    font-size: 0.8rem;
+  }
+
+  @media only screen and (max-width: 700px) {
+    font-size: 0.7rem;
+  }
 `;

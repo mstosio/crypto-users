@@ -17,12 +17,7 @@ class Main extends React.Component {
     nickNameError: '',
     emailError: '',
     ipAdressError: '',
-    users: [
-      { nickname: 'zog', email: 'col@wp.pl', ipadress: '212.222.22.22' },
-      { nickname: 'aog', email: 'aol@wp.pl', ipadress: '212.222.22.22' },
-      { nickname: 'bog', email: 'bol@wp.pl', ipadress: '212.222.22.22' },
-      { nickname: 'cog', email: 'zol@wp.pl', ipadress: '212.222.22.22' },
-    ],
+    users: [],
     sortBy: 'nickname',
     sortType: 'asc',
   };
@@ -31,8 +26,12 @@ class Main extends React.Component {
     let { nickNameError, emailError, ipAdressError } = '';
     const { nickname, email, ipadress } = this.state;
 
-    if (nickname === '') {
+    if (nickname === '' || nickname.length > 24) {
       nickNameError = 'Please, provide nickname';
+    }
+
+    if (nickname.length > 24) {
+      nickNameError = 'Your nickname cannot be longer then 24 characters';
     }
 
     if (ipadress === '') {
@@ -69,11 +68,11 @@ class Main extends React.Component {
     users.map(user => {
       if (nickname === user.nickname) {
         bool = false;
-        alert('DUDE, USER WITH THIS NICKNAME EXSISTS');
+        alert('User with this nickname already exsists.');
       }
       if (email === user.email) {
         bool = false;
-        alert('DUDE, EMAIL IS ALREADY TAKEN');
+        alert('User with this email already exsists.');
       }
     });
 
@@ -93,7 +92,6 @@ class Main extends React.Component {
     const usersList = [...users];
     usersList.push(user);
 
-    // change to Initial State?
     this.setState({
       users: usersList,
       nickname: '',
