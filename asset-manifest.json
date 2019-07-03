@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/Recruitment-Task/static/js/main.f4989b3f.chunk.js",
-    "main.js.map": "/Recruitment-Task/static/js/main.f4989b3f.chunk.js.map",
-    "runtime~main.js": "/Recruitment-Task/static/js/runtime~main.e6cac868.js",
-    "runtime~main.js.map": "/Recruitment-Task/static/js/runtime~main.e6cac868.js.map",
-    "static/js/2.bb076ba3.chunk.js": "/Recruitment-Task/static/js/2.bb076ba3.chunk.js",
-    "static/js/2.bb076ba3.chunk.js.map": "/Recruitment-Task/static/js/2.bb076ba3.chunk.js.map",
-    "index.html": "/Recruitment-Task/index.html",
-    "precache-manifest.3ac5e80a37bb4d68371000ad58f296c0.js": "/Recruitment-Task/precache-manifest.3ac5e80a37bb4d68371000ad58f296c0.js",
-    "service-worker.js": "/Recruitment-Task/service-worker.js"
+    "main.js": "/cryptousers/static/js/main.064322fb.chunk.js",
+    "main.js.map": "/cryptousers/static/js/main.064322fb.chunk.js.map",
+    "runtime~main.js": "/cryptousers/static/js/runtime~main.571efbe5.js",
+    "runtime~main.js.map": "/cryptousers/static/js/runtime~main.571efbe5.js.map",
+    "static/js/2.86b91554.chunk.js": "/cryptousers/static/js/2.86b91554.chunk.js",
+    "static/js/2.86b91554.chunk.js.map": "/cryptousers/static/js/2.86b91554.chunk.js.map",
+    "index.html": "/cryptousers/index.html",
+    "precache-manifest.284f0cbf46ee5524ccf78bfe5c7aec89.js": "/cryptousers/precache-manifest.284f0cbf46ee5524ccf78bfe5c7aec89.js",
+    "service-worker.js": "/cryptousers/service-worker.js"
   }
 }
